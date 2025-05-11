@@ -3,6 +3,44 @@ from pygame.locals import *
 from maze import Maze
 from utils import draw_arrow
 
+def start_screen(screen, WIDTH, HEIGHT):
+    font_title = pygame.font.SysFont(None, 80)
+    font_subtitle = pygame.font.SysFont(None, 40)
+    font_instruction = pygame.font.SysFont(None, 30)  
+    title = font_title.render("Maze Escape", True, (0, 0, 0))
+    subtitle = font_subtitle.render("Find your way out of the labyrinth!", True, (250, 50, 50))
+    instruction = font_instruction.render("Press SPACE to start", True, (100, 100, 100))
+    screen.fill((255, 255, 255))
+    screen.blit(title, ((WIDTH - title.get_width()) // 2, HEIGHT // 3))
+    screen.blit(subtitle, ((WIDTH - subtitle.get_width()) // 2, HEIGHT // 3 + 80))
+    screen.blit(instruction, ((WIDTH - instruction.get_width()) // 2, HEIGHT - 100))
+
+    pygame.display.flip()
+
+    waiting = True  
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+            elif event.type == KEYDOWN:
+                if event.key == K_SPACE:  
+                    waiting = False
+
+def game_over_screen(screen, WIDTH, HEIGHT):
+    font = pygame.font.SysFont(None, 60)
+    text = font.render("You won! Press any key to exit", True, (0, 0, 0))
+    screen.fill((255, 255, 255))
+    screen.blit(text, ((WIDTH - text.get_width()) // 2, HEIGHT // 2))
+    pygame.display.flip()
+    
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+            elif event.type == KEYDOWN:
+                waiting = False
+
 def main():
     pygame.init()
     WIDTH, HEIGHT = 800, 800
@@ -12,6 +50,8 @@ def main():
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Labirinto com Navegação")
+
+    start_screen(screen, WIDTH, HEIGHT)
 
     maze = Maze(maze_cols, maze_rows)
     maze.dijkstra()
@@ -75,6 +115,7 @@ def main():
             draw_arrow(screen, color, (arrow_x, arrow_y), direction, arrow_size)
 
         pygame.display.flip()
+    game_over_screen(screen, WIDTH, HEIGHT)
 
     pygame.quit()
 

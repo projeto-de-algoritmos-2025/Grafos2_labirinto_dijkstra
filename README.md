@@ -30,7 +30,7 @@ Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o la
 - Python 3.10 ou superior
 - `pygame`
 
-**Comandos para instalação**:  
+## Instalação :  
 
    Clone o repositório
    cd Grafos2_labirinto_dijkstra
@@ -44,7 +44,7 @@ Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o la
    Instalar as dependências listadas em requirements.txt
 
    Iniciar o jogo
-## ## Uso
+## Uso
    Use as teclas de seta do teclado para mover o jogador.
 
    O jogo termina ao alcançar a célula de destino (vermelha).

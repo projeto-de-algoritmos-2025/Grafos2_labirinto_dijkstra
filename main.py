@@ -26,11 +26,19 @@ def start_screen(screen, WIDTH, HEIGHT):
                 if event.key == K_SPACE:  
                     waiting = False
 
-def game_over_screen(screen, WIDTH, HEIGHT):
-    font = pygame.font.SysFont(None, 60)
-    text = font.render("You won! Press any key to exit", True, (0, 0, 0))
+def game_over_screen(screen, WIDTH, HEIGHT, final_time):
+    font_title = pygame.font.SysFont(None, 60)
+    font_time = pygame.font.SysFont(None, 40)
+    total_seconds = final_time // 1000
+    minutes = total_seconds // 60
+    seconds = total_seconds % 60
+    game_over_text = font_title.render("GAME OVER", True, (255, 0, 0))  
+    info_text = font_title.render(" Press any key to exit", True, (0, 0, 0))
+    time_text = font_time.render(f"Time: {minutes:02d}:{seconds:02d}", True, (100, 100, 100))
     screen.fill((255, 255, 255))
-    screen.blit(text, ((WIDTH - text.get_width()) // 2, HEIGHT // 2))
+    screen.blit(game_over_text, ((WIDTH - game_over_text.get_width()) // 2, HEIGHT // 2 - 80))
+    screen.blit(info_text, ((WIDTH - info_text.get_width()) // 2, HEIGHT // 2 - 20))
+    screen.blit(time_text, ((WIDTH - time_text.get_width()) // 2, HEIGHT // 2 + 40))
     pygame.display.flip()
     
     waiting = True
@@ -58,7 +66,10 @@ def main():
 
     running = True
     clock = pygame.time.Clock()
-
+    
+    start_time = pygame.time.get_ticks()
+    won = False
+    
     while running:
         clock.tick(60)
         for event in pygame.event.get():
@@ -76,6 +87,7 @@ def main():
                     moved = maze.move_player((0, 1))
                 if moved and maze.player_pos == maze.target_pos:
                     running = False
+                    won = True
 
         screen.fill((255, 255, 255))
         
@@ -115,7 +127,11 @@ def main():
             draw_arrow(screen, color, (arrow_x, arrow_y), direction, arrow_size)
 
         pygame.display.flip()
-    game_over_screen(screen, WIDTH, HEIGHT)
+    
+    if won:
+        end_time = pygame.time.get_ticks()
+        final_time = end_time - start_time  
+        game_over_screen(screen, WIDTH, HEIGHT, final_time)
 
     pygame.quit()
 

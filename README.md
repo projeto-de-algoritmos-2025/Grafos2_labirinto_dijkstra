@@ -1,5 +1,15 @@
 # Labirinto com Dijkstra
 
+**Número da Lista**: 2<br>
+**Conteúdo da Disciplina**: Grafos<br>
+
+## Alunos
+|Matrícula | Aluno |
+| -- | -- |
+| 211042327  |  Carlos Gabriel Cardoso Ramos |
+| 202016604  |  João Lucas Miranda de Sousa |
+
+## Sobre
 Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o labirinto é gerado com o algoritmo de Kruskal e a navegação é guiada com base nas distâncias calculadas pelo algoritmo de Dijkstra.
 
 ## Funcionalidades
@@ -10,12 +20,17 @@ Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o la
 - Setas azuis indicam caminhos que não levam diretamente ao objetivo.
 - Interface gráfica com movimentação do jogador.
 
+## Screenshots
+![Tela Inicial](img/telaInicial.png)
+![Jogo](img/jogo.png)
+![Game Over](img/gameOver.png)
+
 ## Requisitos
 
 - Python 3.10 ou superior
 - `pygame`
 
-## Instalação e Execução
+**Comandos para instalação**:  
 
    Clone o repositório
    cd Grafos2_labirinto_dijkstra
@@ -29,7 +44,7 @@ Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o la
    Instalar as dependências listadas em requirements.txt
 
    Iniciar o jogo
-## Controles
+## ## Uso
    Use as teclas de seta do teclado para mover o jogador.
 
    O jogo termina ao alcançar a célula de destino (vermelha).

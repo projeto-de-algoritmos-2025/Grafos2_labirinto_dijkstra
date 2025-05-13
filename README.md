@@ -48,3 +48,5 @@ Este é um jogo interativo de labirinto em Python utilizando `pygame`, onde o la
    Use as teclas de seta do teclado para mover o jogador.
 
    O jogo termina ao alcançar a célula de destino (vermelha).
+## Outros
+[![Labirinto com dijkstra](https://img.youtube.com/vi/sBQBRwrVzOU/maxresdefault.jpg)](https://youtu.be/sBQBRwrVzOU)
